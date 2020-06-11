@@ -10,7 +10,7 @@ This version supports parsing object detection metadata in #EXT-X-DATERANGE tag.
 For ease of testing, dist directory where the javascript bundles are built into is included in the repo.
 Developers can optionally remove dist directory and rebuild the js bundles with 'npm run-script build' command. 
 1. Clone the repo.
-2. Open demo/index.html
+2. Open demo/index.html with chrome or another web browser.
 
 3. Input media server url and click play.
 
