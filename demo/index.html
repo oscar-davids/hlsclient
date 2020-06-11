@@ -14,8 +14,8 @@
 <body>
 <div>
   <div class="col-md-8">
-    <label>Please input the URL of the media server and press enter...</label>
-    <input id="streamUrl" class="col-md-12 innerControls" type=text value=""/>
+    <label>Please input the URL of the media server(ex: http://192.168.2.200:7935/stream/test_classified.m3u8 )</label>
+    <div class="row"><input id="streamUrl" class="col-md-10 innerControls" type=text value=""/><button id="loadbtn">Play</button></div>
   </div>
   <video id="video"  muted="muted" style="display: none"></video>
   <canvas id="canvas"></canvas>
@@ -161,6 +161,7 @@
   }
 
   var streamUrlInput = document.getElementById("streamUrl");
+  var loadbtn = document.getElementById("loadbtn");
 
   streamUrlInput.addEventListener("keyup", function(event) {
     // Number 13 is the "Enter" key on the keyboard
@@ -169,12 +170,21 @@
       event.preventDefault();
       // Trigger the button element with a click
       streamurl = this.value;
-
-      playstream(streamurl);
+    // Trigger the button element with a click
+      document.getElementById("loadbtn").click();
+      // playstream(streamurl);
 
     }
   });
 
+  loadbtn.addEventListener("click", function(event) {
+
+      streamurl = streamUrlInput.value;
+      console.log(streamurl);
+      playstream(streamurl);
+
+    
+  });
 
 
 
