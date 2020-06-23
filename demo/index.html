@@ -37,7 +37,7 @@
 <script src="../dist/hls.js"></script>
 <script>
 
-  var firstsn = -1;
+  var firstsn = -2;
 
   const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
@@ -67,8 +67,11 @@
     ctx.font = "30px Arial";
     ctx.fillStyle = "red";
 
-    ctx.fillText(objectclass, startX, startY);
-    ctx.rect(startX,startY,endX-startX,endY-startY);
+    var widthscale = layer2.width / 416.0;
+    var heightscale = layer2.height / 416.0;
+
+    ctx.fillText(objectclass, startX * widthscale, startY * heightscale);
+    ctx.rect(startX * widthscale, startY * heightscale, (endX-startX) * widthscale, (endY-startY) * heightscale);
     ctx.lineWidth = "6";
     ctx.strokeStyle = "red";
     ctx.stroke();
@@ -135,8 +138,8 @@
 
     hls.on(Hls.Events.FRAG_CHANGED, async function(event,data) {
        // logger.log('now playing frag sequence number:' + data.frag.sn);
-       if (firstsn == -1){
-          firstsn = data.frag.sn;
+       if (firstsn < 0){
+          firstsn++;
           return;
        }
        clearoverlaycanvas();
@@ -221,11 +224,6 @@
 
     
   });
-
-
-
-
-
 </script>
 </body>
 </html>
