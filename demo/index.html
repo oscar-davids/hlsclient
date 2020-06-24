@@ -99,7 +99,12 @@
         if (prob < 0.95){
             continue;
         }
-        drawRect(strArry[0], parseInt(strArry[2]), parseInt(strArry[3]), parseInt(strArry[4]), parseInt(strArry[5]) );
+
+        if (strArry.length == 6){
+          drawRect(strArry[0], parseInt(strArry[2]), parseInt(strArry[3]), parseInt(strArry[4]), parseInt(strArry[5]) );
+        } else if (strArry.length == 7){
+          drawRect(strArry[0] + strArry[1], parseInt(strArry[3]), parseInt(strArry[4]), parseInt(strArry[5]), parseInt(strArry[6]) );
+        }
     }
 
   }
