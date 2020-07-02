@@ -102,10 +102,14 @@
 
         objectclassnamelength = strArry.length - 5;
         objectclassname = strArry[0]
-        for (i=1; i < objectclassnamelength; i ++)
+        for (i=1; i < objectclassnamelength - 1; i ++)
         {
           objectclassname += " " + strArry[i] ;
         }
+
+        if( strArry[objectclassnamelength] != '0')
+          objectclassname += strArry[objectclassnamelength];
+
         drawRect(objectclassname, parseInt(strArry[objectclassnamelength + 1]), parseInt(strArry[objectclassnamelength + 2]), parseInt(strArry[objectclassnamelength + 3]), parseInt(strArry[objectclassnamelength + 4]) );
 
     }
